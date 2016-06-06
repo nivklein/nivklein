@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <title>Stripes Stripes Stripes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Niv Klein">
+    <!-- Styles -->
+
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+ <meta name="robots" content="noindex,follow" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="stripes_style.css">
+<script>
+$( document ).ready(function() {
+
+    var win = $(window);
+
+    // Each time the user scrolls
+    win.scroll(function() {
+        // End of the document reached?
+        console.log(typeof $(document), typeof win)
+        setTimeout(function() {
+            try {
+                if ($(document).height() - win.height() == Math.floor(win.scrollTop())) {
+                    $('#footer').append('<div style="height:30px;"></div><img src="images/welcome_endless.svg">')
+                }
+            }
+            catch(err) {
+                console.log(err);
+            }
+        }, 100)
+
+    });
+    var delay = Math.floor(Math.random() * 8000) + 2000;
+    console.log('random delay is '+delay)
+    setTimeout(function(){ $('html').load('true_index.html'); }, 2000);
+});
+</script>
+
+</head>
+<body>
+
+
+<div id="footer">
+    <img src="images/welcome_endless.svg">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<script>
+    function shuffle(a) {
+        var j, x, i;
+        for (i = a.length; i; i -= 1) {
+            j = Math.floor(Math.random() * i);
+            x = a[i - 1];
+            a[i - 1] = a[j];
+            a[j] = x;
+        }
+    }
+    var sorts = {
+        all: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+            '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
+            '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41'],
+        2: ['01', '02', '03', '04', '05', '99','06', '07', '08', '09', '10','99',
+        '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '99','99',
+        '21', '22', '23', '24', '25', '99', '26', '27', '28', '29','99','99', '30',
+        '31', '32', '33', '34','99', '35', '36', '37', '38', '39','99'],
+        3: ['01', '02', '03', '04', '05', '06', '07', '08', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+            '21', '22', '23', '25', '26', '27', '28',  '30',
+            '31', '32', '34', '35', '36', '37', '38', '39', ],
+        4: ['09',  '24', '29', '33',  '40', '41'],
+        5: [ '04',  '07',  '10', '12', '13', '21','24','27', '28', '30',
+            '31',  '34', '35']
+    };
+// maybe?
+//    var Images = []
+//    for (var i = 1; i <= 51; i++) {
+//        var curIndex = ("0" + i).slice(-2);
+//        var img1=new Image();
+//        var img2=new Image();
+//        img1.src='images/shop/items/shop_img_' + curIndex + '.svg';
+//        img2.src='images/shop/items/shop_img_' + curIndex + '_over.svg';
+//        console.log(img1,img2)
+//        Images.push(img1)
+//        Images.push(img2)
+//    }
+
+    function changeFilter(num) {
+
+        if (num == 3) { shuffle(sorts['3'])}
+
+        //1 - strips type        //2 only t shirts        //only socks        //sale
+        for (var i = 2; i <= 5; i++) {
+            $('#sort_heading_coloumn_0'+i).attr("src","images/shop/sort_0"+i+".svg");
+        }
+        $('#sort_heading_coloumn_0'+num).attr("src","images/shop/sort_0"+num+"_under.svg");
+        for (var i = 0; i < 51; i++) {
+            var curIndex = ("0" + (i+1)).slice(-2);
+            if (typeof sorts[num][i] != 'undefined') {
+                var imagePath       = 'images/shop/items/shop_img_' + sorts[num][i] + '.svg';
+                //console.log(i+" is filled with image "+sorts[num][i])
+                $('#shop_item_' + curIndex).html("<img  class='shop_item_image' id='shop_item_image_" + sorts[num][i] + "' src='" + imagePath + "'>" )//<img hidden class='shop_item_image' id='shop_item_hover_image_" + curIndex + "' src='" + imagePathHover + "'>")
+            }
+            else {
+
+                $('#shop_item_' + curIndex).html("")
+            }
+        }
+
+        jQuery.each($('.shop_item_image'),
+            function(i,cur){
+                $(cur).hover(
+                        function () {
+
+                            $(this).attr("src", "images/shop/items/shop_img_" + cur.id.substr(16) + "_over.svg");
+
+                        }, function () {
+                            var num = this.id.substr(16);
+                            $(this).attr("src", "images/shop/items/shop_img_" + cur.id.substr(16) + ".svg");
+                        }
+                )
+            }
+        )
+
+        for (var i = 1; i <= 51; i++) {
+            var curIndex = ("0" + i).slice(-2);
+            $('#shop_item_image_' + curIndex).hover(
+                    function () {
+                        //debugger;
+                        var num = this.id.substr(16);
+                        $(this).attr("src", "images/shop/items/shop_img_" + num + "_over.svg");
+
+                    }, function () {
+                        var num = this.id.substr(16);
+                        $(this).attr("src", "images/shop/items/shop_img_" + num + ".svg");
+                    }
+            )
+        }
+    }
+
+    if (typeof document.filterBy == "undefined") document.filterBy = 2
+    changeFilter(document.filterBy)
+
+    //var cur = 'by_stripes'
+
+</script>
+<div style="height: 30px;"></div>
+<div>
+    <img src="images/shop/shop_heading.svg">
+</div>
+<div style="height: 40px;"></div>
+
+<div>
+    <img class="sort_heading_coloumn" id="sort_heading_coloumn_01" src="images/shop/sort_01.svg">
+    <a href="javascript:changeFilter(2)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_02" src="images/shop/sort_02.svg"></a>
+    <a href="javascript:changeFilter(3)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_03" src="images/shop/sort_03.svg"></a>
+    <a href="javascript:changeFilter(4)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_04" src="images/shop/sort_04.svg"></a>
+    <a href="javascript:changeFilter(5)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_05" src="images/shop/sort_05.svg"></a>
+    <img class="sort_heading_coloumn" id="sort_heading_coloumn_06" style="float:right" src="images/shop/sort_06.svg">
+
+</div>
+<div id="left" class="shop_coloumn">
+    <div class="shop_item" id="shop_item_01">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_04">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_07">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_10">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_13">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_16">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_19">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_22">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_25">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_28">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_31">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_34">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_37">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_40">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_43">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_46">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_49">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_52">SHOP ITEM</div>
+</div>
+<div id="center" class="shop_coloumn">
+    <div class="shop_item" id="shop_item_02">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_05">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_08">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_11">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_14">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_17">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_20">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_23">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_26">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_29">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_32">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_35">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_38">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_41">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_44">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_47">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_50">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_53">SHOP ITEM</div>
+
+</div>
+<div id="right" style="float:right" class="shop_coloumn">
+    <div class="shop_item" id="shop_item_03">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_06">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_09">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_12">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_15">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_18">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_21">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_24">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_27">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_30">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_33">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_36">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_39">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_42">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_45">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_48">SHOP ITEM</div>
+    <div class="shop_item" id="shop_item_51">SHOP ITEM</div>
+
+</div>
