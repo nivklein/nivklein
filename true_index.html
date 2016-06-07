@@ -47,7 +47,7 @@ $( document ).ready(function() {
             name = name.substring(0,name.indexOf(' '));
             document.filterBy = num;
         }
-        $('#content_div').load(name, function(){   $("html, body").animate({ scrollTop: 0 }, "slow"); });
+        $('#content_div').load(name, function(){  /* $("html, body").animate({ scrollTop: 0 }, "slow");*/ window.scrollTo(0, 0); });
     }
 </script>
 
