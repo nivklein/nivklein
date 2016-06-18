@@ -7,7 +7,7 @@ textarea {
 	color: #222;
 }
 
-body{margin: 0; padding:0; width:1425px;}
+body{margin: 0; padding:0; width:100%;}
 
 table td { margin: 0; padding: 0}
 table{ padding:0; margin:0;border-collapse: collapse; width: 100% }
@@ -310,13 +310,13 @@ font-size: 25px;
 	position: fixed;
 }
 .stripes_home{
-	background-image:url("images/background.jpg");
-	height: 4904px;
+	background-image:url("images/background.svg");
+	height: 100%;
 }
 
 .shop_coloumn {
 	/*float: left;   width: 33.33%;   width: calc(100% / 3);*/
-	float: left;   height: calc(100% / 3);   width: 467px;
+	float: left;   height: calc(100% / 3);   width: 629px;
 }
 
 .sort_heading_coloumn {
@@ -327,13 +327,13 @@ font-size: 25px;
 	padding-bottom: 59px;
 }
 .shop_item_image{
-	width:467px;
-	height:545px;
+	width:629px;
+	height:735px;
 }
 #right .shop_item {
 	float: right;
 }
 
 #left {
-	padding-right:13px;
+	padding-right:16.5px;
 }
