@@ -19,10 +19,19 @@ $( document ).ready(function() {
     $('#content_div').load('home.html',function() {
         $('.homepage_texts').hover(
                 function() {
-                    $(this).attr("src","images/home_text_0"+this.id.substr(4)+"_under.svg");
+                    if (this.id.substr(4) != '4') {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + "_hover.svg");
+                    }
+                    else {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + "_hover.gif");
+                    }
                 }, function() {
-
-                    $(this).attr("src","images/home_text_0"+this.id.substr(4)+".svg");
+                    if (this.id.substr(4) != '4') {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + ".svg");
+                    }
+                    else {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + ".gif");
+                    }
                 }
         )
     })
@@ -53,10 +62,6 @@ $( document ).ready(function() {
 
 </head>
 <body>
-
-
-
-
 
 <nav class="main-nav" style="padding-top:4px;">
   <div class="sticky pure-menu pure-menu-horizontal">
