@@ -19,10 +19,19 @@ $( document ).ready(function() {
     $('#content_div').load('home.html',function() {
         $('.homepage_texts').hover(
                 function() {
-                    $(this).attr("src","images/home_text_0"+this.id.substr(4)+"_under.svg");
+                    if (this.id.substr(4) != '4') {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + "_hover.svg");
+                    }
+                    else {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + "_hover.gif");
+                    }
                 }, function() {
-
-                    $(this).attr("src","images/home_text_0"+this.id.substr(4)+".svg");
+                    if (this.id.substr(4) != '4') {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + ".svg");
+                    }
+                    else {
+                        $(this).attr("src", "images/home_0" + this.id.substr(4) + ".gif");
+                    }
                 }
         )
     })
@@ -54,15 +63,11 @@ $( document ).ready(function() {
 </head>
 <body>
 
-
-
-
-
 <nav class="main-nav" style="padding-top:4px;">
   <div class="sticky pure-menu pure-menu-horizontal">
       <ul class="pure-menu-list">
           <li class="pure-menu-item pure-menu-selected"><a href="javascript:location.reload();" class="pure-menu-link">Stripes.</a></li>
-  				<li class="pure-menu-item pure-menu-selected" style="width:886px;">  </li>
+  				<li class="pure-menu-item pure-menu-selected" style="width:1478px;">  </li>
           <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
               <a href="#" id="menuLink1" class="pure-menu-link">Shop.</a>
               <ul class="pure-menu-children">
@@ -86,7 +91,7 @@ $( document ).ready(function() {
 							<a href="#" id="menuLink1" class="pure-menu-link">About/Info.</a>
 							<ul class="pure-menu-children">
 									<li class="pure-menu-item"><a href="javascript:swichPage('about.html')" class="pure-menu-link">About.</a></li>
-									<li class="pure-menu-item"><a href="#" class="pure-menu-link">The Book of Stripes.</a></li>
+									<li class="pure-menu-item" style="height:100%; padding-bottom:20px;"><a href="#" class="pure-menu-link">The Book    <br/><br/> of Stripes.</a></li>
 							</ul>
 					</li>
 					<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
