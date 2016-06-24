@@ -20,24 +20,24 @@ $( document ).ready(function() {
     var win = $(window);
 
     // Each time the user scrolls
-    win.scroll(function() {
+    $(window).scroll(function() {
         // End of the document reached?
         console.log(typeof $(document), typeof win)
         setTimeout(function() {
             try {
-                if ($(document).height() - win.height() == Math.floor(win.scrollTop())) {
+                if ($(document).height() - $(window).height() == Math.floor($(window).scrollTop())) {
                     $('#footer').append('<div style="height:30px;"></div><img src="images/welcome_endless.svg">')
                 }
             }
             catch(err) {
-                console.log(err);
+                //console.log(err);
             }
         }, 100)
 
     });
     var delay = Math.floor(Math.random() * 8000) + 2000;
     console.log('random delay is '+delay)
-    setTimeout(function(){ $('html').load('true_index.html'); }, 2000);
+    setTimeout(function(){  $('html').load('true_index.html'); }, 2000);
 });
 </script>
 

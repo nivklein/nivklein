@@ -12,7 +12,7 @@
         all: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
             '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
             '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-            '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41'],
+            '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41','42','43'],
 
         //Strip type
         2: ['01', '02', '03', '04', '05', '99','06', '07', '08', '09', '10','99',
@@ -29,7 +29,9 @@
         4: ['09',  '24', '29', '33',  '40', '41'],
         //Sale
         5: [ '04',  '07',  '10', '12', '13', '21','24','27', '28', '30',
-            '31',  '34', '35']
+            '31',  '34', '35'],
+        //Misc
+        6: ['42','43']
     };
 // maybe?
 //    var Images = []
@@ -45,6 +47,10 @@
 //    }
 
     function changeFilter(num) {
+
+        setTimeout(function(){
+            console.log('changeFilter tatat'); $(window).scrollTop(950);
+        }, 300)
 
         if (num == 3) { shuffle(sorts['3'])}
 
@@ -95,6 +101,7 @@
                     }
             )
         }
+
     }
 
     if (typeof document.filterBy == "undefined") document.filterBy = 2
@@ -109,13 +116,13 @@
 </div>
 <div style="height: 40px;"></div>
 
-<div>
+<div id="scroll_to">
     <img class="sort_heading_coloumn" id="sort_heading_coloumn_01" src="images/shop/sort_01.svg">
     <a href="javascript:changeFilter(2)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_02" src="images/shop/sort_02.svg"></a>
     <a href="javascript:changeFilter(3)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_03" src="images/shop/sort_03.svg"></a>
     <a href="javascript:changeFilter(4)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_04" src="images/shop/sort_04.svg"></a>
     <a href="javascript:changeFilter(5)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_05" src="images/shop/sort_05.svg"></a>
-    <a href="javascript:alert('shalom')"><img class="sort_heading_coloumn" id="sort_heading_coloumn_06" src="images/shop/sort_06.svg"></a>
+    <a href="javascript:changeFilter(6)"><img class="sort_heading_coloumn" id="sort_heading_coloumn_06" src="images/shop/sort_06.svg"></a>
     <img class="sort_heading_coloumn" id="sort_heading_coloumn_06" style="float:right" src="images/shop/sort_07.svg">
 
 </div>
